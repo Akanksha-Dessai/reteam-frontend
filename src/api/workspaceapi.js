@@ -1,19 +1,18 @@
-import axios from "axios";
-
+import { axiosSecureInstance } from "./axios";
 
 export const getAllWorkspaces = async () => {
-  return await axios.get("http://localhost:8011/api/workspace/all");
+  return await axiosSecureInstance.get("api/workspace/all");
 };
 
 export const getUserWorkspaces = async () => {
-  return await axios.get("http://localhost:8011/api/workspace/user-workspaces", {
+  return await axiosSecureInstance.get("api/workspace/user-workspaces", {
     headers: {  },
   });
 };
 
 export const createWorkspace = async (data) => {
   try {
-    const response = await axios.post("http://localhost:8011/api/workspace/create", data, {
+    const response = await axiosSecureInstance.post("api/workspace/create", data, {
       headers: { },
     });
 
@@ -27,7 +26,7 @@ export const createWorkspace = async (data) => {
 
 
 export const deleteWorkspace = async (id) => {
-    return await axios.delete(`http://localhost:8011/api/workspace/${id}`, {
+    return await axiosSecureInstance.delete(`api/workspace/${id}`, {
       headers: {  },
     });
   };
